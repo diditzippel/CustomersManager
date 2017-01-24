@@ -55,7 +55,8 @@ public class addCustomerServlet extends HttpServlet {
 	    	System.out.println("Convert List of customers objects to JSON :");
 	    	System.out.println(listToJson);
 	    	
-//	    	response.setContentType("application/json");// set content to json
+	    	// this is my second commit
+            //response.setContentType("application/json");// set content to json
 	    	PrintWriter out = response.getWriter();
 	    	out.write(listToJson);
 	    	
