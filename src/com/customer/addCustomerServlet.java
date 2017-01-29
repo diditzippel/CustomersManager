@@ -47,7 +47,6 @@ public class addCustomerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
         String typeAction = request.getParameter("action");
-
 		
 		if (typeAction.equals("getAllCustomer")){
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -55,13 +54,10 @@ public class addCustomerServlet extends HttpServlet {
 	    	System.out.println("Convert List of customers objects to JSON :");
 	    	System.out.println(listToJson);
 	    	
-	    	// this is my second commit
-            //response.setContentType("application/json");// set content to json
+            response.setContentType("application/json");// set content to json
 	    	PrintWriter out = response.getWriter();
 	    	out.write(listToJson);
 	    	
-	    	// Assuming your json object is **jsonObject**, perform the following, it will return your json object  
-	    	out.print(listToJson);
 	    	out.flush();
 		}
 	}
@@ -81,21 +77,13 @@ public class addCustomerServlet extends HttpServlet {
         	Customer customer = new ObjectMapper().readValue(jsonObjectBeforeCasting, Customer.class);
         	Customer.listFromJsonObject.add(customer);
         	
-            System.out.println(customer.getFirstName() + " - " + customer.getLastName() + " - " + customer.getState() + " - " + customer.getCity() + " - " + customer.getAdress() + " - " + customer.getMail() + " - " + customer.getPhone());
-            
+            System.out.println(customer.getFirstName() + " - " + 
+            				   customer.getLastName() + " - " + 
+            				   customer.getMail() + " - " + 
+            		           customer.getPhone() + " - " + 
+            				   customer.getAdress() + " - " + 
+            		           customer.getState() + " - " + 
+            				   customer.getCity());
         }
-        
-//        else if (typeAction == "getAllCustomer"){
-//        	
-//        	ObjectMapper objectMapper = new ObjectMapper();
-//        	String listToJson = objectMapper.writeValueAsString(Customer.listFromJsonObject);
-//        	System.out.println("Convert List of customers objects to JSON :");
-//        	System.out.println(listToJson);
-//        	
-//        	PrintWriter out = response.getWriter();
-//        	// Assuming your json object is **jsonObject**, perform the following, it will return your json object  
-//        	out.print(listToJson);
-//        	out.flush();
-//        }
 	}
 }

@@ -33,7 +33,8 @@ mainApp.service("customerManagerService", function( $http, $q ) {
                 	action: "getAllCustomer"
                 }
             });
-            return( request.then( handleSuccess, handleError ) );
+            //return( request.then( handleSuccess, handleError ) );
+            return request;
         }
         
         // I remove the customer with the given ID from the remote collection.

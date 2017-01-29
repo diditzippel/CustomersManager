@@ -1,14 +1,16 @@
 mainApp.controller('addCustomerController', function($scope, $http, customerManagerService) {
-
+	$scope.customers = [];
+	
 	// add customer
     $scope.addCustomer = function() {
-        customerManagerService.addCustomer( $scope.customer);
-        $scope.customers = [];  
+        customerManagerService.addCustomer( $scope.customer); 
     };
     
     // get all customer
     $scope.getAllCustomer = function() {
-        $scope.customers = customerManagerService.getAllCustomer();
-        //$scope.customers = response.data;
+        customerManagerService.getAllCustomer()
+        .then(function(response) {
+        	$scope.customers = response.data;
+        });
     };
 })
